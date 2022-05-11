@@ -3,7 +3,9 @@
 # LinkedList Node object to hold expense data
 class Expense:
 
-    def __init__(self, retailer, total, details):
+    def __init__(self, date, retailer, total, details):
+        # Date of expense
+        self._date = date
         # Store name
         self._retailer = retailer
         # Purchase total
@@ -12,6 +14,9 @@ class Expense:
         self._details = details
         # Pointer to next link in the list
         self._next = None
+
+    def get_date(self):
+        return self._date
 
     def get_retailer(self):
         return self._retailer
@@ -24,6 +29,10 @@ class Expense:
 
     def get_next(self):
         return self._next
+
+    def set_date(self, new_date):
+        self._date = new_date
+        return
 
     def set_retailer(self, new_retailer):
         self._retailer = new_retailer
@@ -62,12 +71,7 @@ class ExpenseList:
     def get_tail(self):
         return self._tail
 
-    # Updates the total monthly cost
-    def set_total_cost(self):
-        # add the last expense to the total cost
-        self._total_cost += self._tail.get_purchase_tot()
-        return
-
+    # Updates total monthly cost
     def update_total_cost(self):
         # Set expense to head of expense list
         expense = self._head
@@ -87,5 +91,12 @@ class ExpenseList:
         return
 
     def set_tail(self, node):
+        self._tail = node
+        return
+
+    def add_expense_to_list(self, node):
+        # Set last node to point to new node
+        self._tail.set_next(node)
+        # Set tail to point to new node
         self._tail = node
         return
