@@ -54,6 +54,10 @@ class Expense:
     def __ge__(self, expense):
         return expense.get_date() >= self._date
 
+    # Less than comparison definition for the expense object
+    def __lt__(self, expense):
+        return expense.get_date() < self._date
+
 
 # LinkedList of expenses for the month
 class ExpenseList:
@@ -98,9 +102,26 @@ class ExpenseList:
         self._tail = node
         return
 
+    # Adds an expense to the list while maintaining ascending order by date
     def add_expense_to_list(self, node):
-        # Set last node to point to new node
-        self._tail.set_next(node)
-        # Set tail to point to new node
-        self._tail = node
+
+        if node >= self._tail:
+            # Set last node to point to new node
+            self._tail.set_next(node)
+            # Set tail to point to new node
+            self._tail = node
+        elif node < self._head:
+            # Set new node to point to current head
+            node.set_next(self._head)
+            # Set head to point to new node
+            self._head = node
+        else:
+            curr = self._head
+            # Search the list for node insertion point
+            while node < curr:
+                curr = curr.get_next()
+
+            # Insert the new node into list
+            node.set_next(curr.get_next())
+            curr.set_next(node)
         return

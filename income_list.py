@@ -45,6 +45,10 @@ class Income:
     def __ge__(self, gain):
         return gain.get_date() >= self._date
 
+    # Less than comparison definition for the income object
+    def __lt__(self, gain):
+        return gain.get_date() < self._date
+
 
 # Linked list of income nodes
 class IncomeList:
@@ -89,9 +93,27 @@ class IncomeList:
         self._tail = node
         return
 
+    # Adds a new income node to list while maintaining ascending order by date
     def add_income_to_list(self, node):
-        # Set the tail node's next to the new node
-        self._tail.set_next(node)
-        # Set the tail to point to the new node
-        self._tail = node
+
+        if node >= self._tail:
+            # Set the tail node's next to the new node
+            self._tail.set_next(node)
+            # Set the tail to point to the new node
+            self._tail = node
+        elif node < self._head:
+            # Set new nodes next to current head
+            node.set_next(self._head)
+            # Set head to new node
+            self._head = node
+        else:
+            curr = self._head
+            # Search the list for the correct spot to put the new node
+            while node < curr:
+                curr = curr.get_next()
+
+            # Insert the new node into the list
+            node.set_next(curr.get_next())
+            curr.set_next(node)
+
         return
