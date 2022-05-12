@@ -50,6 +50,10 @@ class Expense:
         self._next = next_link
         return
 
+    # Greater than or equal to comparison definition for the expense object
+    def __ge__(self, expense):
+        return expense.get_date() >= self._date
+
 
 # LinkedList of expenses for the month
 class ExpenseList:

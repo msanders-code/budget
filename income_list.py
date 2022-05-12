@@ -41,6 +41,10 @@ class Income:
         self._next = node
         return
 
+    # Greater than or equal to comparison definition for the income object
+    def __ge__(self, gain):
+        return gain.get_date() >= self._date
+
 
 # Linked list of income nodes
 class IncomeList:
