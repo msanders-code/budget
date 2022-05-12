@@ -53,13 +53,13 @@ class Income:
 # Linked list of income nodes
 class IncomeList:
 
-    def __init__(self):
+    def __init__(self, node):
         # Total monthly income
-        self._total_income = 0.00
+        self._total_income = node.get_gain()
         # First link in list
-        self._head = None
+        self._head = node
         # Last link in list
-        self._tail = None
+        self._tail = node
 
     def get_total_income(self):
         return self._total_income

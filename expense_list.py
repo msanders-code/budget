@@ -62,13 +62,13 @@ class Expense:
 # LinkedList of expenses for the month
 class ExpenseList:
 
-    def __init__(self):
+    def __init__(self, node):
         # Total monthly cost
-        self._total_cost = 0.00
+        self._total_cost = node.get_purchase_tot()
         # First link in the list
-        self._head = None
+        self._head = node
         # Last link in the list
-        self._tail = None
+        self._tail = node
 
     def get_total_cost(self):
         return self._total_cost
