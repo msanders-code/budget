@@ -32,7 +32,7 @@ def main():
         curr_expense = curr_expense.get_next()
 
     # Print updated total cost for the month by accessing the data dictionary entry
-    print(data["2022"].get_expenses_by_month("03").get_total_cost())
+    print(f"Total expense for month: {data['2022'].get_expenses_by_month('03').get_total_cost()}\n")
 
     # Test income and income list objects
     income1 = il.Income("01/15/2022", 1102.98, "Paycheck")
@@ -56,7 +56,7 @@ def main():
         curr_gain = curr_gain.get_next()
 
     # Print updated total income for the month by accessing the data dictionary entry
-    print(data["2022"].get_income_by_month("01").get_total_income())
+    print(f"Total income for month: {data['2022'].get_income_by_month('01').get_total_income()}")
 
 
 if __name__ == "__main__":

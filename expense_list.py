@@ -53,11 +53,11 @@ class Expense:
 
     # Greater than or equal to comparison definition for the expense object
     def __ge__(self, expense):
-        return expense.get_date() >= self._date
+        return int(self._date[3:5]) >= int(expense.get_date()[3:5])
 
     # Less than comparison definition for the expense object
     def __lt__(self, expense):
-        return expense.get_date() < self._date
+        return int(self._date[3:5]) < int(expense.get_date()[3:5])
 
 
 # LinkedList of expenses for the month

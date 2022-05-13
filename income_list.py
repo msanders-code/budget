@@ -44,11 +44,11 @@ class Income:
 
     # Greater than or equal to comparison definition for the income object
     def __ge__(self, gain):
-        return gain.get_date() >= self._date
+        return int(self._date[3:5]) >= int(gain.get_date()[3:5])
 
     # Less than comparison definition for the income object
     def __lt__(self, gain):
-        return gain.get_date() < self._date
+        return int(self._date[3:5]) < int(gain.get_date()[3:5])
 
 
 # Linked list of income nodes
