@@ -57,3 +57,7 @@ def main():
 
     # Print updated total income for the month by accessing the data dictionary entry
     print(data["2022"].get_income_by_month("01").get_total_income())
+
+
+if __name__ == "__main__":
+    main()
