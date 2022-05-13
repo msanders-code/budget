@@ -3,6 +3,9 @@
 # LinkedList Node object to hold expense data
 class Expense:
 
+    # Pointer to next link in the list
+    _next = None
+
     def __init__(self, date, retailer, total, details):
         # Date of expense
         self._date = date
@@ -12,8 +15,6 @@ class Expense:
         self._purchase_tot = total
         # Items bought/notes about the purchase
         self._details = details
-        # Pointer to next link in the list
-        self._next = None
 
     def get_date(self):
         return self._date

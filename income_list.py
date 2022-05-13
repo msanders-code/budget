@@ -3,6 +3,9 @@
 # LinkedList Node object to hold the income data
 class Income:
 
+    # Pointer to next link in list
+    _next = None
+
     def __init__(self, date, gain, notes):
         # Date of income
         self._date = date
@@ -10,8 +13,6 @@ class Income:
         self._gain = gain
         # Notes about income
         self._notes = notes
-        # Pointer to next link in list
-        self._next = None
 
     def get_date(self):
         return self._date
