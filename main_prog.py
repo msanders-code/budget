@@ -20,19 +20,19 @@ def main():
     e_lst = data["2022"].get_expenses_by_month("03")
 
     expense2 = el.Expense("03/21/2022", "Burger King", 20.82, "Lunch")
-    e_lst.add_expense_to_list(expense2)
-    e_lst.update_total_cost()
+    e_lst.add_item_to_list(expense2)
+    e_lst.update_total()
     curr_expense = e_lst.get_head()
 
     # print the current expenses
     print("Current Expenses:\n")
     while curr_expense is not None:
         print(f"{curr_expense.get_date()}\n{curr_expense.get_retailer()}")
-        print(f"{curr_expense.get_purchase_tot()}\n{curr_expense.get_details()}\n")
+        print(f"{curr_expense.get_total()}\n{curr_expense.get_details()}\n")
         curr_expense = curr_expense.get_next()
 
     # Print updated total cost for the month by accessing the data dictionary entry
-    print(f"Total expense for month: {data['2022'].get_expenses_by_month('03').get_total_cost()}\n")
+    print(f"Total expense for month: {data['2022'].get_expenses_by_month('03').get_total()}\n")
 
     # Test income and income list objects
     income1 = il.Income("01/15/2022", 1102.98, "Paycheck")
@@ -44,19 +44,19 @@ def main():
     i_lst = data["2022"].get_income_by_month("01")
 
     income2 = il.Income("01/31/2022", 1102.98, "Paycheck")
-    i_lst.add_income_to_list(income2)
-    i_lst.update_income()
+    i_lst.add_item_to_list(income2)
+    i_lst.update_total()
     curr_gain = i_lst.get_head()
 
     # print the current gains
     print("Current Gains:\n")
     while curr_gain is not None:
-        print(f"{curr_gain.get_date()}\n{curr_gain.get_gain()}")
-        print(f"{curr_gain.get_notes()}\n")
+        print(f"{curr_gain.get_date()}\n{curr_gain.get_total()}")
+        print(f"{curr_gain.get_details()}\n")
         curr_gain = curr_gain.get_next()
 
     # Print updated total income for the month by accessing the data dictionary entry
-    print(f"Total income for month: {data['2022'].get_income_by_month('01').get_total_income()}")
+    print(f"Total income for month: {data['2022'].get_income_by_month('01').get_total()}")
 
 
 if __name__ == "__main__":

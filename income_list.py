@@ -1,120 +1,18 @@
 # LinkedList and Node objects to build the income list
 
+import expense_list as el
+
+
 # LinkedList Node object to hold the income data
-class Income:
+# That inherits from the expense class
+class Income (el.Expense):
 
-    # Pointer to next link in list
-    _next = None
-
-    def __init__(self, date, gain, notes):
-        # Date of income
-        self._date = date
-        # Income amount
-        self._gain = gain
-        # Notes about income
-        self._notes = notes
-
-    def get_date(self):
-        return self._date
-
-    def get_gain(self):
-        return self._gain
-
-    def get_notes(self):
-        return self._notes
-
-    def get_next(self):
-        return self._next
-
-    def set_date(self, new_date):
-        self._date = new_date
-        return
-
-    def set_gain(self, new_gain):
-        self._gain = new_gain
-        return
-
-    def set_notes(self, new_note):
-        self._notes = new_note
-        return
-
-    def set_next(self, node):
-        self._next = node
-        return
-
-    # Greater than or equal to comparison definition for the income object
-    def __ge__(self, gain):
-        return int(self._date[3:5]) >= int(gain.get_date()[3:5])
-
-    # Less than comparison definition for the income object
-    def __lt__(self, gain):
-        return int(self._date[3:5]) < int(gain.get_date()[3:5])
+    def __init__(self, date, total, details):
+        super().__init__(date, "", total, details)
 
 
-# Linked list of income nodes
-class IncomeList:
+# Linked list of income nodes that inherits from the expense list
+class IncomeList (el.ExpenseList):
 
     def __init__(self, node):
-        # Total monthly income
-        self._total_income = node.get_gain()
-        # First link in list
-        self._head = node
-        # Last link in list
-        self._tail = node
-
-    def get_total_income(self):
-        return self._total_income
-
-    def get_head(self):
-        return self._head
-
-    def get_tail(self):
-        return self._tail
-
-    # Updates total income after changing an income amount of a node in the list
-    def update_income(self):
-        # Points to the current income node in the list
-        income = self._head
-        tot = 0.00
-
-        # Adds income from each node in the list to a total
-        while income is not None:
-            tot += income.get_gain()
-            income = income.get_next()
-
-        # Update the monthly total
-        self._total_income = tot
-        return
-
-    def set_head(self, node):
-        self._head = node
-        return
-
-    def set_tail(self, node):
-        self._tail = node
-        return
-
-    # Adds a new income node to list while maintaining ascending order by date
-    def add_income_to_list(self, node):
-
-        if node >= self._tail:
-            # Set the tail node's next to the new node
-            self._tail.set_next(node)
-            # Set the tail to point to the new node
-            self._tail = node
-        elif node < self._head:
-            # Set new nodes next to current head
-            node.set_next(self._head)
-            # Set head to new node
-            self._head = node
-        else:
-            curr = self._head
-            # Search the list for the correct spot to put the new node
-            while node < curr:
-                curr = curr.get_next()
-
-            # Insert the new node into the list
-            node.set_next(curr.get_next())
-            curr.set_next(node)
-
-        return
+        super().__init__(node)
