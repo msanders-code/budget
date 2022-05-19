@@ -4,6 +4,7 @@
 import expense_list as el
 import income_list as il
 import year_obj as yr
+from datetime import date
 
 
 def main():
@@ -15,10 +16,20 @@ def main():
     """
 
     print("Budget Tracker\n")
-    quit_application = False
+    quit_application = True
 
     while quit_application is False:
         pass
+
+
+def get_date():
+
+    current_date = str(date.today())
+
+    # Returns a reformatted date in month, day, year format
+    return current_date[5:7] + '/' \
+        + current_date[8:] + '/' \
+        + current_date[:4]
 
 
 if __name__ == "__main__":
