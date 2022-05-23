@@ -1,10 +1,11 @@
 # Entry point for the application
 
 # Import all expense, income and year objects
-import expense_list as el
-import income_list as il
-import year_obj as yr
+# import expense_list as el
+# import income_list as il
+# import year_obj as yr
 from datetime import date
+from app_window import Application
 
 
 def main():
@@ -14,12 +15,17 @@ def main():
     calls the functions to display the main
     page UI elements.
     """
+    # testing
+    print("Program Started")
 
-    print("Budget Tracker\n")
-    quit_application = True
+    # Main application object
+    app = Application()
 
-    while quit_application is False:
-        pass
+    # Start application loop
+    app.get_app().MainLoop()
+
+    # testing
+    print("Program Ended")
 
 
 def get_date():
