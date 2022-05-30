@@ -31,3 +31,9 @@ class Application:
     # Return the Frame object
     def get_window(self):
         return self._window
+
+    def get_window_size(self):
+        return self._window.GetSizeTuple()
+
+    def get_id(self):
+        return self._window.GetId()
